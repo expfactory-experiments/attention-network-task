@@ -1,18 +1,19 @@
 {
-    "cognitive_atlas_task_id": "trm_551f0857e1db8",
-    "instructions":"Respond to the stimuli on the screen.",
-    "description":"Expfactory experiment",
-    "url":"https://www.github.com/expfactory-experiments/attention-network-task",
-    "contributors": [
-        "Ian Eisenberg",
-        "Zeynep Enkavi",
-        "Patrick Bissett",
-        "Vanessa Sochat",
-        "Russell Poldrack"
-    ],
-    "exp_id": "attention-network-task",
     "name": "Attention Network Task",
-    "reference": ["http://www.mitpressjournals.org/doi/pdf/10.1162/089892902317361886"],
-    "template": "jspsych",
-    "time": 15
+    "exp_id": "attention-network-task",
+    "url": "https://www.github.com/earcanal/attention-network-task/",
+    "description":"Attention Network Task.",
+    "instructions": "N/A",
+    "template":"jspsych",
+    "cognitive_atlas_task_id": "",
+    "contributors": [
+                     "Ian Eisenberg",
+                     "Zeynep Enkavi",
+                     "Patrick Bissett",
+                     "Vanessa Sochat",
+                     "Russell Poldrack",
+                     "Paul Sharpe"
+                    ], 
+    "time":15,
+    "reference": ["http://www.mitpressjournals.org/doi/pdf/10.1162/089892902317361886"]
 }
