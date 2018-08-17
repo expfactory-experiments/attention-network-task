@@ -482,7 +482,6 @@ if (Practise == 1) {
 		}
 		attention_network_task_experiment.push(last_fixation)
 	}
-
 	attention_network_task_experiment.push(rest_block)
 }
 attention_network_task_experiment.push(test_intro_block);
@@ -575,7 +574,8 @@ for (b = 0; b < blocks.length; b++) {
 		attention_network_task_experiment.push(last_fixation)
 	}
 	attention_network_task_experiment.push(attention_node)
-	attention_network_task_experiment.push(rest_block)
+	if (b < (blocks.length - 1)) // no rest after final block
+		attention_network_task_experiment.push(rest_block)
 }
 if (PostTask == 1)
 	attention_network_task_experiment.push(post_task_block)
