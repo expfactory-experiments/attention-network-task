@@ -12,5 +12,5 @@ There's an associated **alpha** `R` package for processing the data.
 
 ```
 library(devtools)
-install_github('earcanal/attention-network-task/efantr')
+install_github('expfactory-experiments/attention-network-task/expfactory.attentionnetworktest')
 ```

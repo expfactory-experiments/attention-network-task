@@ -11,6 +11,6 @@ test_that("process_ant() returns correct p column value", {
 })
 
 test_that("process_expfactory_experiment() returns a data frame", {
-  expect_is(expfactoryr::process_expfactory_experiment(path = '../fixtures/attention-network-task-no-feedback-results.json'), 'data.frame')
+  expect_is(expfactory::process_expfactory_experiment(path = '../fixtures/attention-network-task-no-feedback-results.json'), 'data.frame')
 })
 
