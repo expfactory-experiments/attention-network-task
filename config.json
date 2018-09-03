@@ -1,7 +1,7 @@
 {
     "name": "Attention Network Task",
     "exp_id": "attention-network-task",
-    "url": "https://www.github.com/earcanal/attention-network-task/",
+    "url": "https://www.github.com/expfactory-experiments/attention-network-task",
     "description":"Attention Network Task.",
     "instructions": "N/A",
     "template":"jspsych",
