@@ -2,7 +2,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name="robots" content="noindex">
-    <title>The Experiment Factory attention-network-task</title>
+    <title>The Experiment Factory: Attention Network Task</title>
     
 <link rel='stylesheet' type='text/css' href='jspsych.css'>
 <link rel='stylesheet' type='text/css' href='default_style.css'>
@@ -15,38 +15,56 @@
 <script src='js/jspsych/jspsych.js'></script>
 <script src='js/jspsych/plugins/jspsych-text.js'></script>
 <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
-<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-categorize.js'></script>
 <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
-<script src='js/jspsych/plugins/jspsych-call-function.js'></script>
 <script src='js/jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
 <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-categorize.js'></script>
 <script src='js/jspsych/plugins/jspsych-survey-text.js'></script>
-<script src='js/jspsych/poldrack_plugins/jspsych-single-stim-button.js'></script>
+<script src='js/jspsych/plugins/jspsych-call-function.js'></script>
 <script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
+<script src="js/util.js"></script>
+<script>
+    var Lab      = $.QueryString.Lab      ? $.QueryString.Lab      : 0;  // 1 = running in the lab
+    var PostTask = $.QueryString.PostTask ? $.QueryString.PostTask : 0;  // 1 = add post-task block
+    var Practise = $.QueryString.Practise ? $.QueryString.Practise : 1;  // 1 = include practice block
+    var Skip     = $.QueryString.Skip     ? $.QueryString.Skip     : 0;  // 1 = skip task
+</script>
 <script src='experiment.js'></script>
 
 <script>
-$( document ).ready(function() {
+$(document).ready(function() {
+    // allow skipping
+    var myfunc = function() {
+        return 'do nothing';
+    }
+    var block = {
+        type: 'call-function',
+        func: myfunc
+    }
+
+    if (Skip == 1) {
+        timeline = [];
+        timeline.push(block);
+        fullscreen = false;
+    } else {
+        timeline = attention_network_task_experiment;
+        fullscreen = true;
+    }
 
     jsPsych.init({
-             timeline: attention_network_task_experiment,
+             timeline: timeline,
              display_element: "getDisplayElement",
-             fullscreen: true,
+             fullscreen: fullscreen,
              on_trial_finish: function(data){
                addID('attention-network-task')
              },
-
              on_finish: function(data){
-
                  // Serialize the data
                  var promise = new Promise(function(resolve, reject) {
                      var data = jsPsych.data.dataAsJSON();
                      resolve(data);
                  })
-
                  promise.then(function(data) {
-
-
                      $.ajax({
                          type: "POST",
                          url: '/save',
@@ -58,16 +76,17 @@ $( document ).ready(function() {
                          error: function(err) {
 
                              if (err.status == 200){
-                                 document.location = "/next";
+                                document.location = "/next"
                              } else {
-                                 // If error, assue local save
-                                 jsPsych.data.localSave('attention-network-task_results.csv', 'csv');
-                             }
+                                 // if error, assume local save
+                                if (Skip == 0) {
+                                    jsPsych.data.localSave('attention-network-task-no-feedback_results.json', 'json');
+                                }
+                            }
                          }
                      });
                  })
              }
-
       });
 });
 </script>
