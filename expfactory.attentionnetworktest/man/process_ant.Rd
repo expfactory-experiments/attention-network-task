@@ -13,7 +13,7 @@ process_ant(ant_file, p, time, json = TRUE)
 
 \item{time}{Time-point at which participant completed ANT}
 
-\item{json}{Boolean indicating whether ANT data format is JSON (TRUE) or CSV (FALSE)}
+\item{json=TRUE}{Boolean indicating whether ANT data format is JSON (TRUE) or CSV (FALSE)}
 }
 \value{
 Data frame
@@ -23,12 +23,11 @@ Data frame
 (\url{https://expfactory.github.io/attention_network_task.html}).
 }
 \examples{
-\dontrun{
 ant <- expand.grid(token = participants$token, time=1:2) \%>\%
  rowwise() \%>\%
  mutate(path=paste('data/', token, '_finished/ant', time, '-results.json', sep='')) \%>\%
- do(., expfactory.attentionnetworktest::process_ant(.$path, .$token, .$time)) \%>\%
-}
+ do(., efantr::process_ant(.$path, .$token, .$time)) \%>\%
+
 }
 \keyword{ANT}
 \keyword{expfactory}
