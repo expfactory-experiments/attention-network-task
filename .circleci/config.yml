@@ -19,7 +19,7 @@ defaults: &defaults
     - image: docker:18.01.0-ce-git
   working_directory: /tmp/src
   environment:
-    - EXPFACTORY_PACKAGE: expfactory.attentionnetworktask
+    - EXPFACTORY_PACKAGE: expfactory.attentionnetworktest
 
 # Installation
 install: &install
