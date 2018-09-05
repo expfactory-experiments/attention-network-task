@@ -17,7 +17,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c('exp_stage','trial_type'
 #' @param ant_file Path to ANT file
 #' @param p Participant number
 #' @param time Time-point at which participant completed ANT
-#' @param json Boolean indicating whether ANT data format is JSON (TRUE) or CSV (FALSE)
+#' @param json Boolean indicating whether ANT data format is JSON (TRUE), default or CSV (FALSE)
 #' @keywords expfactory ANT
 #' @importFrom utils read.csv
 #' @importFrom magrittr %>%
