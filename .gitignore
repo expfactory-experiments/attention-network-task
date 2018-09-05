@@ -1,0 +1,5 @@
+*.Rcheck
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
