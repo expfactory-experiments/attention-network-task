@@ -8,6 +8,16 @@ This is an Experiment that is friendly for use in the [Experiment Factory](https
 
 There's an associated **alpha** `R` package for processing the data.
 
+## Testing
+
+You can test locally, just as the continuous integration does!
+ ```
+git clone https://www.github.com/expfactory-experiments/attention-network-task
+cd attention-network-task
+$ docker run -v $PWD/expfactory.attentionnetworktask:/data expfactory/expfactoryr test
+...
+```
+
 ## Installation
 
 ```
